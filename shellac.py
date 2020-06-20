@@ -3,11 +3,11 @@ import subprocess
 import ipaddress
 
 headers = ['name', 'version', 'address']
-ipv4 = ['ip', '-o', 'a']
+ip = ['ip', '-o', 'a']
 
-result = subprocess.run(ipv4, capture_output=True)
-stdout = result.stdout.decode('ascii')
-for line in stdout.replace('  ', ' ').split('\n'):
+result = subprocess.run(ip, capture_output=True)
+stdout = result.stdout.decode('ascii').replace('  ', ' ').split('\n')
+for line in stdout:
     if line:
         _ = line.split(' ')
         _ = _[1:5]
